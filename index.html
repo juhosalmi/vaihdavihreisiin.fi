@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaihda kokoomuksesta vihreisiin — vaihdavihreisiin.fi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vihrea: #6EB82A;
+    --vihrea-tumma: #2E5E1A;
+    --metsa: #1A3A1A;
+    --kerma: #F4EFE3;
+    --kerma-syva: #EAE2CE;
+    --terra: #C95B3D;
+    --aurinko: #E8B931;
+    --taivas: #8AB6D6;
+    --musta: #161A14;
+    --harmaa: #6B6F66;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    background: var(--kerma);
+    color: var(--musta);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96;
+  }
+  .display-sm {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--kerma);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--vihrea);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-mark::before, .logo-mark::after {
+    content: ''; position: absolute;
+    background: var(--vihrea-tumma);
+    opacity: 0.35;
+  }
+  .logo-mark::before {
+    width: 100%; height: 2px;
+    top: 50%; left: 0;
+  }
+  .logo-mark::after {
+    width: 70%; height: 70%;
+    border: 2px solid var(--vihrea-tumma);
+    border-radius: 50%;
+    top: 15%; left: 15%;
+    background: transparent;
+    opacity: 0.4;
+  }
+  .nav-cta {
+    background: var(--musta); color: var(--kerma);
+    padding: 10px 22px; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    transition: transform .2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 32px 100px;
+    max-width: 1280px; margin: 0 auto;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--kerma-syva);
+    padding: 8px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 500;
+    margin-bottom: 36px;
+  }
+  .hero-tag-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--terra);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero h1 {
+    font-size: clamp(48px, 9vw, 128px);
+    margin-bottom: 32px;
+    max-width: 16ch;
+  }
+  .hero h1 .accent { color: var(--vihrea); }
+  .hero h1 .strike {
+    position: relative; display: inline-block;
+    color: var(--harmaa);
+  }
+  .hero h1 .strike::after {
+    content: ''; position: absolute;
+    top: 55%; left: -2%; right: -2%;
+    height: 8px; background: var(--terra);
+    transform: rotate(-2deg);
+  }
+  .hero-sub {
+    font-size: 22px; max-width: 56ch;
+    color: var(--musta);
+    margin-bottom: 48px;
+    line-height: 1.45;
+  }
+  .hero-cta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 16px;
+    transition: transform .2s, box-shadow .2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--vihrea); color: var(--metsa); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
+  .btn-ghost {
+    background: transparent; color: var(--musta);
+    border: 1.5px solid var(--musta);
+  }
+  .btn-ghost:hover { background: var(--musta); color: var(--kerma); }
+
+  .hero-globe {
+    position: absolute;
+    top: 80px; right: -40px;
+    width: 320px; height: 320px;
+    opacity: 0.95;
+  }
+
+  /* HONEST INTRO */
+  .honest {
+    background: var(--metsa);
+    color: var(--kerma);
+    padding: 100px 32px;
+  }
+  .honest-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .honest-label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--vihrea); margin-bottom: 24px;
+  }
+  .honest h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 32px;
+    max-width: 22ch;
+  }
+  .honest p {
+    font-size: 20px; line-height: 1.5;
+    max-width: 60ch;
+    opacity: 0.92;
+  }
+  .honest p + p { margin-top: 18px; }
+
+  /* SHARED VALUES */
+  .section {
+    padding: 120px 32px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--vihrea-tumma); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before {
+    content: ''; width: 32px; height: 2px; background: var(--vihrea);
+  }
+  .section h2 {
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 48px;
+    max-width: 16ch;
+  }
+  .shared-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .shared-card {
+    background: var(--kerma-syva);
+    padding: 32px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .shared-card-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 14px;
+    color: var(--vihrea-tumma);
+    margin-bottom: 16px;
+  }
+  .shared-card h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 22px;
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .shared-card p {
+    font-size: 15px; color: var(--harmaa);
+  }
+
+  /* WHERE FURTHER */
+  .further {
+    background: var(--vihrea);
+    color: var(--metsa);
+    padding: 120px 32px;
+  }
+  .further-inner {
+    max-width: 1280px; margin: 0 auto;
+  }
+  .further .section-label { color: var(--metsa); }
+  .further .section-label::before { background: var(--metsa); }
+  .further h2 { color: var(--metsa); }
+  .further-list {
+    display: grid; gap: 0;
+    margin-top: 60px;
+  }
+  .further-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    gap: 32px; padding: 40px 0;
+    border-top: 2px solid var(--metsa);
+    align-items: start;
+  }
+  .further-item:last-child { border-bottom: 2px solid var(--metsa); }
+  .further-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 32px;
+    line-height: 1;
+  }
+  .further-item h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 28px;
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .further-item p {
+    font-size: 17px; line-height: 1.55;
+  }
+
+  /* DON'T SWITCH */
+  .dont {
+    background: var(--kerma);
+    padding: 120px 32px;
+    position: relative;
+  }
+  .dont-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .dont .section-label { color: var(--terra); }
+  .dont .section-label::before { background: var(--terra); }
+  .dont h2 .accent {
+    background: var(--terra); color: var(--kerma);
+    padding: 0 18px; border-radius: 8px;
+    display: inline-block; transform: rotate(-1deg);
+  }
+  .dont-intro {
+    font-size: 22px; max-width: 56ch;
+    margin-bottom: 56px; line-height: 1.45;
+  }
+  .dont-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .dont-card {
+    background: white;
+    border: 2px solid var(--musta);
+    padding: 28px; border-radius: 20px;
+    position: relative;
+  }
+  .dont-card-mark {
+    width: 36px; height: 36px;
+    background: var(--terra); color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+    margin-bottom: 16px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .dont-card h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 19px;
+    line-height: 1.15; margin-bottom: 8px;
+  }
+  .dont-card p {
+    font-size: 15px; color: var(--harmaa); line-height: 1.5;
+  }
+
+  /* WHO */
+  .who {
+    background: var(--taivas);
+    padding: 100px 32px;
+    color: var(--metsa);
+  }
+  .who-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+  .who .section-label { color: var(--metsa); }
+  .who .section-label::before { background: var(--metsa); }
+  .who h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin-bottom: 16px;
+  }
+  .who ul {
+    list-style: none; margin-top: 16px;
+  }
+  .who li {
+    padding: 14px 0;
+    border-bottom: 1.5px solid rgba(26, 58, 26, 0.2);
+    font-size: 17px; font-weight: 500;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .who li::before {
+    content: '→';
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; color: var(--vihrea);
+    font-size: 22px;
+  }
+
+  /* FINAL CTA */
+  .final {
+    background: var(--musta);
+    color: var(--kerma);
+    padding: 120px 32px;
+    text-align: center;
+  }
+  .final-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .final h2 {
+    font-size: clamp(48px, 8vw, 96px);
+    margin-bottom: 32px;
+    line-height: 0.95;
+  }
+  .final h2 .accent { color: var(--vihrea); }
+  .final p {
+    font-size: 20px; opacity: 0.85;
+    margin-bottom: 48px;
+    max-width: 50ch; margin-left: auto; margin-right: auto;
+  }
+  .final .btn-primary {
+    font-size: 20px; padding: 22px 40px;
+  }
+  .final-secondary {
+    margin-top: 32px;
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    font-size: 15px;
+  }
+  .final-secondary a {
+    color: var(--kerma); opacity: 0.7;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .final-secondary a:hover { opacity: 1; }
+
+  /* FOOTER */
+  footer {
+    background: var(--metsa);
+    color: var(--kerma);
+    padding: 40px 32px;
+    text-align: center;
+    font-size: 13px; opacity: 0.7;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero { padding: 48px 24px 60px; }
+    .hero h1 { font-size: clamp(40px, 12vw, 64px); }
+    .hero-globe { display: none; }
+    .section { padding: 80px 24px; }
+    .honest, .further, .dont, .who, .final { padding: 80px 24px; }
+    .who-inner { grid-template-columns: 1fr; gap: 32px; }
+    .further-item {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    nav { padding: 14px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark"></div>
+    <span>vaihdavihreisiin.fi</span>
+  </div>
+  <a href="#liity" class="nav-cta">Liity vihreisiin</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-globe" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="100" cy="100" r="90" fill="#6EB82A"/>
+    <ellipse cx="100" cy="100" rx="90" ry="36" fill="none" stroke="#2E5E1A" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="100" cy="100" rx="36" ry="90" fill="none" stroke="#2E5E1A" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="100" cy="100" rx="70" ry="90" fill="none" stroke="#2E5E1A" stroke-width="1.5" opacity="0.3"/>
+    <ellipse cx="100" cy="100" rx="90" ry="70" fill="none" stroke="#2E5E1A" stroke-width="1.5" opacity="0.3"/>
+    <path d="M 50 80 Q 70 70, 90 85 T 130 75 Q 150 80, 155 100" fill="none" stroke="#1A3A1A" stroke-width="2.5" opacity="0.4"/>
+  </svg>
+  <div class="hero-tag">
+    <span class="hero-tag-dot"></span>
+    <span>Rehellinen kampanja — myös silloin kun ei kannata vaihtaa</span>
+  </div>
+  <h1 class="display">
+    Vaihda<br>
+    <span class="strike">kokoomuksesta</span><br>
+    <span class="accent">vihreisiin.</span>
+  </h1>
+  <p class="hero-sub">
+    Et äänestä puoluetta siksi, että se käy hyvin kaupaksi. Äänestät, koska jokin asia on sinulle tärkeä. Katsotaan yhdessä, onko se sama asia, jonka vuoksi äänestät tällä hetkellä kokoomusta.
+  </p>
+  <div class="hero-cta-row">
+    <a href="#yhteistä" class="btn btn-primary">Lue miksi →</a>
+    <a href="#milloin-ei" class="btn btn-ghost">Milloin ei kannata</a>
+  </div>
+</section>
+
+<!-- HONEST INTRO -->
+<section class="honest">
+  <div class="honest-inner">
+    <div class="honest-label">Lupauksemme sinulle</div>
+    <h2 class="display">Tämä sivu on rehellinen, ei mainos.</h2>
+    <p>Tarkoitus on kertoa kokoomuslaiselle, miksi vihreät voisi olla parempi koti äänellesi — ja yhtä rehellisesti, milloin niin ei ole.</p>
+    <p>Jos pääsyysi äänestää kokoomusta ovat verojen lasku ja pienempi julkinen sektori, sanomme sen suoraan: jää kokoomukseen. Se on rehellinen vastaus, eikä sitä yritetä piilottaa tällä sivulla.</p>
+  </div>
+</section>
+
+<!-- SHARED VALUES -->
+<section class="section" id="yhteistä">
+  <div class="section-label">01 — Mistä olemme jo samaa mieltä</div>
+  <h2 class="display">Enemmän yhteistä kuin uskotkaan.</h2>
+  <p style="font-size: 20px; max-width: 56ch; line-height: 1.5;">
+    Kokoomuksen ja vihreiden välillä on aitoja arvoyhtymäkohtia. Et vaihtaisi arvojasi — vaihtaisit puoluetta, joka edustaa niitä kenties johdonmukaisemmin.
+  </p>
+  <div class="shared-grid">
+    <div class="shared-card">
+      <div class="shared-card-num">01</div>
+      <h3>Sivistys & koulutus</h3>
+      <p>Tutkimus, korkeakoulutus ja sivistys ovat molempien puolueiden ydintä — ainakin paperilla.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">02</div>
+      <h3>EU & NATO</h3>
+      <p>Avoimesti länsimielinen ulkopolitiikka ja syvenevä eurooppalainen yhteistyö.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">03</div>
+      <h3>Markkinatalous & yrittäjyys</h3>
+      <p>Vihreät ovat 2010-luvulta lähtien siirtyneet selvästi markkinaystävällisempään suuntaan.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">04</div>
+      <h3>Liberaali demokratia</h3>
+      <p>Oikeusvaltio, yksilönvapaudet ja vähemmistöjen oikeudet — ei neuvoteltavissa.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">05</div>
+      <h3>Osaamisperustainen maahanmuutto</h3>
+      <p>Suomi tarvitsee kansainvälisiä osaajia. Tästä kannattaa puhua ilman pelkoa.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">06</div>
+      <h3>Urbaani Suomi</h3>
+      <p>Kaupungit ovat talouden moottoreita — eivät ongelma, joka pitää tasoittaa pois.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE FURTHER -->
+<section class="further">
+  <div class="further-inner">
+    <div class="section-label">02 — Missä vihreät vie pidemmälle</div>
+    <h2 class="display">Sama arvo. Johdonmukaisempi linja.</h2>
+    <div class="further-list">
+      <div class="further-item">
+        <div class="further-num">①</div>
+        <div>
+          <h3>Ilmasto­politiikka — markkinaehtoisesti.</h3>
+        </div>
+        <p>Päästökauppa ja hiilivero ovat itse asiassa kokoomuslaisia työkaluja: ne hinnoittelevat ulkoisvaikutukset markkinoille sen sijaan, että valtio määräisi ratkaisut sektori kerrallaan. Vihreät kannattavat näitä työkaluja johdonmukaisemmin. Nykyhallituksessa kokoomus on osallistunut päästövähennystavoitteiden vesittämiseen.</p>
+      </div>
+      <div class="further-item">
+        <div class="further-num">②</div>
+        <div>
+          <h3>Koulutus, johon kokoomus aikoinaan vetosi.</h3>
+        </div>
+        <p>Sivistysporvaruus oli kokoomuksen tunnusmerkki. Tällä hallituskaudella koulutuksesta on leikattu satoja miljoonia — peruskoulusta, korkeakouluista, tutkimuksesta. Jos koulutus oli sinulle yksi kokoomuksen valitsemisen syy, se syy asuu nyt vihreissä.</p>
+      </div>
+      <div class="further-item">
+        <div class="further-num">③</div>
+        <div>
+          <h3>Liberaali arvomaailma — ilman jarrua.</h3>
+        </div>
+        <p>Kokoomuksen liberaali siipi on jäänyt hallituksessa perussuomalaisten varjoon: maahanmuutto­linjaa, vähemmistöpolitiikkaa ja kansainvälisiä sopimuksia on viety suuntaan, jota moni urbaani kokoomuslainen ei tunnista omakseen. Vihreissä liberaali linja ei vaadi kompromisseja konservatiivi­populistien kanssa.</p>
+      </div>
+      <div class="further-item">
+        <div class="further-num">④</div>
+        <div>
+          <h3>Kaavoitus ja asumisen vapauttaminen.</h3>
+        </div>
+        <p>Vihreät on Suomen selkein YIMBY-puolue: kannattaa tiivistä rakentamista, kaavoituksen sujuvoittamista ja sen lopettamista, että vanhat asukkaat saavat veto-oikeuden uudisrakentamiseen. Tämä on markkinaratkaisu asuntopulaan — ei sen vastakohta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DON'T SWITCH -->
+<section class="dont" id="milloin-ei">
+  <div class="dont-inner">
+    <div class="section-label">03 — Rehellinen osio</div>
+    <h2 class="display">Milloin sinun <span class="accent">ei</span> kannata vaihtaa.</h2>
+    <p class="dont-intro">
+      Tällä sivulla ei väitetä, että vihreät on jokaiselle kokoomuslaiselle parempi koti. Ei ole. Jos jokin näistä on pääsyysi äänestää kokoomusta, jää sinne.
+    </p>
+    <div class="dont-list">
+      <div class="dont-card">
+        <div class="dont-card-mark">✕</div>
+        <h3>Haluat verot alas.</h3>
+        <p>Pidät kokonaisveroastetta jo nyt liian korkeana. Vihreät hyväksyy korkeamman verotason kuin kokoomus — erityisesti pääomatuloissa ja haittaveroissa.</p>
+      </div>
+      <div class="dont-card">
+        <div class="dont-card-mark">✕</div>
+        <h3>Haluat selvästi pienemmän julkisen sektorin.</h3>
+        <p>Vihreät ei ole supistus­puolue. Se haluaa kohdentaa julkista rahaa eri tavalla — ei välttämättä vähemmän.</p>
+      </div>
+      <div class="dont-card">
+        <div class="dont-card-mark">✕</div>
+        <h3>Pidät ilmastopolitiikkaa toissijaisena.</h3>
+        <p>Tämä on aito linjaero, eikä siitä vihreissä tingitä. Jos ilmastopolitiikka tuntuu ylimitoitetulta, vihreät tuntuu siltä yhä jatkossakin.</p>
+      </div>
+      <div class="dont-card">
+        <div class="dont-card-mark">✕</div>
+        <h3>Vastustat perustuloa.</h3>
+        <p>Vihreät ajaa sosiaaliturvan laajempaa uudistamista universaalimpaan suuntaan. Jos näet tämän väärin kohdennettuna tukena, et tule pitämään suunnasta.</p>
+      </div>
+      <div class="dont-card">
+        <div class="dont-card-mark">✕</div>
+        <h3>Pidät työmarkkina­joustoa keskeisenä.</h3>
+        <p>Jos työehtomalttilainsäädäntö ja paikallinen sopiminen ovat sinulle ykkösasioita, kokoomuksen linja on niissä lähempänä.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="who-inner">
+    <div>
+      <div class="section-label">04 — Kenelle tämä viesti on</div>
+      <h2 class="display">Sinulle, jos tunnistat itsesi tästä.</h2>
+      <p style="font-size: 18px; margin-top: 16px;">
+        Et välttämättä jokaiseen kohtaan. Mutta jos useimpiin — meillä on sinulle koti.
+      </p>
+    </div>
+    <ul>
+      <li>Olet kaupunkilainen, korkeakoulutettu liberaali</li>
+      <li>Arvostat tutkimusta ja koulutusta</li>
+      <li>Pidät ilmastopolitiikkaa todellisena asiana</li>
+      <li>Haluat Suomen pärjäävän osaamisella</li>
+      <li>Et tunnista itseäsi PS-vetoisesta arvolinjasta</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="liity">
+  <div class="final-inner">
+    <h2 class="display">Vaihda kotiin,<br>joka <span class="accent">tunnistaa sinut.</span></h2>
+    <p>Sama liberaali sivistysporvari. Sama markkinatalous. Sama länsimielisyys. Mutta ilman kompromisseja, joita et tilannut.</p>
+    <a href="#" class="btn btn-primary">Liity vihreisiin →</a>
+    <div class="final-secondary">
+      <a href="#">Tilaa uutiskirje</a>
+      <a href="#">Lue muiden puolueiden sivut</a>
+      <a href="#">Lähetä palautetta</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  vaihdavihreisiin.fi — riippumaton kampanjasivusto · ei Vihreä liitto rp:n virallinen sivusto
+</footer>
+
+</body>
+</html>
