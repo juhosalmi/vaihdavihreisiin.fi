@@ -133,11 +133,12 @@
   }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 28px; border-radius: 999px;
+    padding: 16px 28px; border-radius: 10px;
     text-decoration: none; font-weight: 600; font-size: 16px;
     transition: transform .2s, box-shadow .2s;
     border: none; cursor: pointer;
   }
+  .btn-sm { padding: 4px 12px !important; font-size: 14px !important; border-radius: 5px !important; }
   .btn-primary { background: var(--vihrea); color: var(--metsa); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
   .btn-ghost {
@@ -225,6 +226,7 @@
   }
   .shared-card p {
     font-size: 15px; color: var(--harmaa);
+    margin-bottom: 1rem;
   }
 
   /* WHERE FURTHER */
@@ -347,6 +349,41 @@
     font-size: 22px;
   }
 
+  /* NEXT STEP (WHATSAPP) */
+  .next-step {
+    background: var(--metsa);
+    color: var(--kerma);
+    padding: 120px 32px;
+    text-align: left;
+  }
+  .next-step-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .next-step h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 32px;
+    line-height: 0.95;
+  }
+  .next-step h2 .accent { color: var(--vihrea); }
+  .next-step p {
+    font-size: 20px; opacity: 0.85;
+    margin-bottom: 48px;
+    margin-left: auto; margin-right: auto;
+  }
+  .next-step .btn-primary {
+    font-size: 20px; padding: 22px 40px;
+  }
+  .next-step-secondary {
+    margin-top: 32px;
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    font-size: 15px;
+  }
+  .next-step-secondary a {
+    color: var(--kerma); opacity: 0.7;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .next-step-secondary a:hover { opacity: 1; }
+
   /* FINAL CTA */
   .final {
     background: var(--musta);
@@ -381,6 +418,45 @@
     text-decoration: underline; text-underline-offset: 4px;
   }
   .final-secondary a:hover { opacity: 1; }
+
+  /* ABOUT MAKERS */
+  .about {
+    background: var(--metsa);
+    color: var(--kerma);
+    padding: 120px 32px;
+    text-align: left;
+  }
+  .about-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .about-inner img {
+    border-radius: 50%;
+    background-color: #fff;
+    max-width: 320px;
+    width: 100%;
+  }
+  .about-inner .shared-card h3 {
+    color: var(--metsa);
+  }
+  .about h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 32px;
+    line-height: 0.95;
+  }
+  .about h2 .accent { color: var(--vihrea); }
+  .about .btn-primary {
+    font-size: 20px; padding: 22px 40px;
+  }
+  .about-secondary {
+    margin-top: 32px;
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    font-size: 15px;
+  }
+  .about-secondary a {
+    color: var(--kerma); opacity: 0.7;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .about-secondary a:hover { opacity: 1; }
 
   /* FOOTER */
   footer {
