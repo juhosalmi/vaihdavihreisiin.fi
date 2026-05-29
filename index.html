@@ -3,415 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
 <title>Vaihda kokoomuksesta Vihreisiin — vaihdavihreisiin.fi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --vihrea: #6EB82A;
-    --vihrea-tumma: #2E5E1A;
-    --metsa: #1A3A1A;
-    --kerma: #F4EFE3;
-    --kerma-syva: #EAE2CE;
-    --terra: #C95B3D;
-    --aurinko: #E8B931;
-    --taivas: #8AB6D6;
-    --musta: #161A14;
-    --harmaa: #6B6F66;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Hanken Grotesk', system-ui, sans-serif;
-    background: var(--kerma);
-    color: var(--musta);
-    line-height: 1.55;
-    font-size: 17px;
-    -webkit-font-smoothing: antialiased;
-  }
-  .display {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.025em;
-    font-variation-settings: "opsz" 96;
-  }
-  .display-sm {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    background: var(--kerma);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    padding: 18px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .logo {
-    display: flex; align-items: center; gap: 12px;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 18px;
-    letter-spacing: -0.01em;
-  }
-  .logo-mark {
-    width: 32px; height: 32px;
-    background: var(--vihrea);
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-  }
-  .logo-mark::before, .logo-mark::after {
-    content: ''; position: absolute;
-    background: var(--vihrea-tumma);
-    opacity: 0.35;
-  }
-  .logo-mark::before {
-    width: 100%; height: 2px;
-    top: 50%; left: 0;
-  }
-  .logo-mark::after {
-    width: 70%; height: 70%;
-    border: 2px solid var(--vihrea-tumma);
-    border-radius: 50%;
-    top: 15%; left: 15%;
-    background: transparent;
-    opacity: 0.4;
-  }
-  .nav-cta {
-    background: var(--musta); color: var(--kerma);
-    padding: 10px 22px; border-radius: 999px;
-    text-decoration: none; font-weight: 600; font-size: 15px;
-    transition: transform .2s;
-  }
-  .nav-cta:hover { transform: translateY(-1px); }
-
-  /* HERO */
-  .hero {
-    padding: 80px 32px 100px;
-    max-width: 1280px; margin: 0 auto;
-    position: relative;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--kerma-syva);
-    padding: 8px 16px; border-radius: 999px;
-    font-size: 14px; font-weight: 500;
-    margin-bottom: 36px;
-  }
-  .hero-tag-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--terra);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-  .hero h1 {
-    font-size: clamp(48px, 9vw, 128px);
-    margin-bottom: 32px;
-    max-width: 16ch;
-  }
-  .hero h1 .accent { color: var(--vihrea); }
-  .hero h1 .strike {
-    position: relative; display: inline-block;
-    color: var(--harmaa);
-  }
-  .hero h1 .strike::after {
-    content: ''; position: absolute;
-    top: 55%; left: -2%; right: -2%;
-    height: 8px; background: var(--terra);
-    transform: rotate(-2deg);
-  }
-  .hero-sub {
-    font-size: 22px; max-width: 56ch;
-    color: var(--musta);
-    margin-bottom: 48px;
-    line-height: 1.45;
-  }
-  .hero-cta-row {
-    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 28px; border-radius: 999px;
-    text-decoration: none; font-weight: 600; font-size: 16px;
-    transition: transform .2s, box-shadow .2s;
-    border: none; cursor: pointer;
-  }
-  .btn-primary { background: var(--vihrea); color: var(--metsa); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
-  .btn-ghost {
-    background: transparent; color: var(--musta);
-    border: 1.5px solid var(--musta);
-  }
-  .btn-ghost:hover { background: var(--musta); color: var(--kerma); }
-
-  .hero-globe {
-    position: absolute;
-    top: 80px; right: -40px;
-    width: 320px; height: 320px;
-    opacity: 0.95;
-  }
-
-  /* HONEST INTRO */
-  .honest {
-    background: var(--metsa);
-    color: var(--kerma);
-    padding: 100px 32px;
-  }
-  .honest-inner {
-    max-width: 900px; margin: 0 auto;
-  }
-  .honest-label {
-    font-size: 13px; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--vihrea); margin-bottom: 24px;
-  }
-  .honest h2 {
-    font-size: clamp(36px, 5vw, 64px);
-    margin-bottom: 32px;
-    max-width: 22ch;
-  }
-  .honest p {
-    font-size: 20px; line-height: 1.5;
-    max-width: 60ch;
-    opacity: 0.92;
-  }
-  .honest p + p { margin-top: 18px; }
-
-  /* SHARED VALUES */
-  .section {
-    padding: 120px 32px;
-    max-width: 1280px; margin: 0 auto;
-  }
-  .section-label {
-    font-size: 13px; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--vihrea-tumma); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; width: 32px; height: 2px; background: var(--vihrea);
-  }
-  .section h2 {
-    font-size: clamp(40px, 6vw, 80px);
-    margin-bottom: 48px;
-    max-width: 16ch;
-  }
-  .shared-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 60px;
-  }
-  .shared-card {
-    background: var(--kerma-syva);
-    padding: 32px;
-    border-radius: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .shared-card-num {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 14px;
-    color: var(--vihrea-tumma);
-    margin-bottom: 16px;
-  }
-  .shared-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 22px;
-    line-height: 1.15; letter-spacing: -0.01em;
-    margin-bottom: 12px;
-  }
-  .shared-card p {
-    font-size: 15px; color: var(--harmaa);
-  }
-
-  /* WHERE FURTHER */
-  .further {
-    background: var(--vihrea);
-    color: var(--metsa);
-    padding: 120px 32px;
-  }
-  .further-inner {
-    max-width: 1280px; margin: 0 auto;
-  }
-  .further .section-label { color: var(--metsa); }
-  .further .section-label::before { background: var(--metsa); }
-  .further h2 { color: var(--metsa); }
-  .further-list {
-    display: grid; gap: 0;
-    margin-top: 60px;
-  }
-  .further-item {
-    display: grid;
-    grid-template-columns: 80px 1fr 2fr;
-    gap: 32px; padding: 40px 0;
-    border-top: 2px solid var(--metsa);
-    align-items: start;
-  }
-  .further-item:last-child { border-bottom: 2px solid var(--metsa); }
-  .further-num {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 32px;
-    line-height: 1;
-  }
-  .further-item h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 28px;
-    line-height: 1.1; letter-spacing: -0.01em;
-  }
-  .further-item p {
-    font-size: 17px; line-height: 1.55;
-  }
-
-  /* DON'T SWITCH */
-  .dont {
-    background: var(--kerma);
-    padding: 120px 32px;
-    position: relative;
-  }
-  .dont-inner {
-    max-width: 1100px; margin: 0 auto;
-  }
-  .dont .section-label { color: var(--terra); }
-  .dont .section-label::before { background: var(--terra); }
-  .dont h2 .accent {
-    background: var(--terra); color: var(--kerma);
-    padding: 0 18px; border-radius: 8px;
-    display: inline-block; transform: rotate(-1deg);
-  }
-  .dont-intro {
-    font-size: 22px; max-width: 56ch;
-    margin-bottom: 56px; line-height: 1.45;
-  }
-  .dont-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-  }
-  .dont-card {
-    background: white;
-    border: 2px solid var(--musta);
-    padding: 28px; border-radius: 20px;
-    position: relative;
-  }
-  .dont-card-mark {
-    width: 36px; height: 36px;
-    background: var(--terra); color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 18px;
-    margin-bottom: 16px;
-    font-family: 'Bricolage Grotesque', sans-serif;
-  }
-  .dont-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; font-size: 19px;
-    line-height: 1.15; margin-bottom: 8px;
-  }
-  .dont-card p {
-    font-size: 15px; color: var(--harmaa); line-height: 1.5;
-  }
-
-  /* WHO */
-  .who {
-    background: var(--taivas);
-    padding: 100px 32px;
-    color: var(--metsa);
-  }
-  .who-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-    align-items: center;
-  }
-  .who .section-label { color: var(--metsa); }
-  .who .section-label::before { background: var(--metsa); }
-  .who h2 {
-    font-size: clamp(36px, 5vw, 56px);
-    margin-bottom: 16px;
-  }
-  .who ul {
-    list-style: none; margin-top: 16px;
-  }
-  .who li {
-    padding: 14px 0;
-    border-bottom: 1.5px solid rgba(26, 58, 26, 0.2);
-    font-size: 17px; font-weight: 500;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .who li::before {
-    content: '→';
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 800; color: var(--vihrea);
-    font-size: 22px;
-  }
-
-  /* FINAL CTA */
-  .final {
-    background: var(--musta);
-    color: var(--kerma);
-    padding: 120px 32px;
-    text-align: center;
-  }
-  .final-inner {
-    max-width: 900px; margin: 0 auto;
-  }
-  .final h2 {
-    font-size: clamp(48px, 8vw, 96px);
-    margin-bottom: 32px;
-    line-height: 0.95;
-  }
-  .final h2 .accent { color: var(--vihrea); }
-  .final p {
-    font-size: 20px; opacity: 0.85;
-    margin-bottom: 48px;
-    max-width: 50ch; margin-left: auto; margin-right: auto;
-  }
-  .final .btn-primary {
-    font-size: 20px; padding: 22px 40px;
-  }
-  .final-secondary {
-    margin-top: 32px;
-    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
-    font-size: 15px;
-  }
-  .final-secondary a {
-    color: var(--kerma); opacity: 0.7;
-    text-decoration: underline; text-underline-offset: 4px;
-  }
-  .final-secondary a:hover { opacity: 1; }
-
-  /* FOOTER */
-  footer {
-    background: var(--metsa);
-    color: var(--kerma);
-    padding: 40px 32px;
-    text-align: center;
-    font-size: 13px; opacity: 0.7;
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .hero { padding: 48px 24px 60px; }
-    .hero h1 { font-size: clamp(40px, 12vw, 64px); }
-    .hero-globe { display: none; }
-    .section { padding: 80px 24px; }
-    .honest, .further, .dont, .who, .final { padding: 80px 24px; }
-    .who-inner { grid-template-columns: 1fr; gap: 32px; }
-    .further-item {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    nav { padding: 14px 20px; }
-  }
-</style>
+<link rel='stylesheet' href='style.css' media='all' />
 </head>
 <body>
 
@@ -431,33 +28,28 @@
     <ellipse cx="100" cy="100" rx="36" ry="90" fill="none" stroke="#2E5E1A" stroke-width="2" opacity="0.5"/>
     <ellipse cx="100" cy="100" rx="70" ry="90" fill="none" stroke="#2E5E1A" stroke-width="1.5" opacity="0.3"/>
     <ellipse cx="100" cy="100" rx="90" ry="70" fill="none" stroke="#2E5E1A" stroke-width="1.5" opacity="0.3"/>
-    <path d="M 50 80 Q 70 70, 90 85 T 130 75 Q 150 80, 155 100" fill="none" stroke="#1A3A1A" stroke-width="2.5" opacity="0.4"/>
   </svg>
   <div class="hero-tag">
     <span class="hero-tag-dot"></span>
-    <span>Rehellinen opas — myös silloin kun ei kannata vaihtaa</span>
+    <span>Rehellinen opas, myös silloin kun ei kannata vaihtaa</span>
   </div>
   <h1 class="display">
     Vaihda<br>
-    <span class="strike">kokoomuksesta</span><br>
+    <span class="kokoomus">kokoomuksesta</span><br>
     <span class="accent">Vihreisiin.</span>
   </h1>
   <p class="hero-sub">
-    Moni kokoomuslainen äänestää sivistyksen, avoimen talouden ja liberaalin demokratian vuoksi. Tämä sivu kysyy, edustiko valitsemasi puolue niitä johdonmukaisimmin.
+    Moni kokoomuslainen äänestää sivistyksen, avoimen talouden ja liberaalin demokratian vuoksi. Mutta jos olet arvoliberaali sivistysporvari, ehkä Vihreät onkin sinulle parempi puolue?
   </p>
-  <div class="hero-cta-row">
-    <a href="#yhteistä" class="btn btn-primary">Lue miksi →</a>
-    <a href="#milloin-ei" class="btn btn-ghost">Milloin ei kannata</a>
-  </div>
 </section>
 
 <!-- HONEST INTRO -->
-<section class="honest">
+<section class="honest" id="honest">
   <div class="honest-inner">
     <div class="honest-label">Mikä tämä sivu on</div>
     <h2 class="display">Rehellinen opas, ei mainos.</h2>
-    <p>Tämä sivu käy läpi, missä Vihreät ja Kokoomus jakavat saman arvopohjan, missä Vihreät vie sitä pidemmälle ja missä on aito linjaero. Ei mainosteta, ei piilotettu.</p>
-    <p>Jos veronalennukset ovat sinulle ykkösasia ympäristöstä riippumatta, jää Kokoomukseen. Se on rehellinen vastaus. Muussa tapauksessa lue eteenpäin.</p>
+    <p>Käymme läpi missä Vihreät ja Kokoomus jakavat saman arvopohjan, ja missä Vihreiden ja Kokoomuksen näkemykset eroavat .</p>
+    <p>Jos veronalennukset ovat sinulle ykkösasia muista asioista riippumatta, Kokoomus on varmasti hyvä valinta. Jos kuitenkin verotuksen taso on sinulle vain yksi politiikkakysymys muiden joukossa, lue eteenpäin.</p>
   </div>
 </section>
 
@@ -466,7 +58,7 @@
   <div class="section-label">01 — Mistä olemme jo samaa mieltä</div>
   <h2 class="display">Enemmän yhteistä kuin uskotkaan.</h2>
   <p style="font-size: 20px; max-width: 56ch; line-height: 1.5;">
-    Markkinavihreä ajattelutapa ei ole vasemmisto, joka löysi ympäristön. Se on liberaali arvomaailma, jolle ilmasto- ja kaupunkipolitiikka ovat markkinataloudellisesti johdonmukaisia kysymyksiä.
+    Vihreät on markkinoiden voimaan uskova arvoliberaali, sivistykseen ja tietopohjaiseen päätöksentekoon panostava urbaani puolue, jolle on tärkeää myös tulevien sukupolvien hyvinvointi. 
   </p>
   <div class="shared-grid">
     <div class="shared-card">
@@ -476,26 +68,31 @@
     </div>
     <div class="shared-card">
       <div class="shared-card-num">02</div>
-      <h3>EU &amp; NATO</h3>
-      <p>Avoimesti länsimielinen ulkopolitiikka, syvenevä eurooppalainen yhteistyö, NATO-jäsenyys. Kumpikin puolue seisoo tässä varauksetta.</p>
+      <h3>Länsimainen yhteistyö</h3>
+      <p>Avoimesti länsimielinen ulkopolitiikka ja syvenevä eurooppalainen yhteistyö. Kumpikin puolue seisoo tässä varauksetta.</p>
+    </div>
+        <div class="shared-card">
+      <div class="shared-card-num">03</div>
+      <h3>Maanpuolustustahto</h3>
+      <p>Kokoomus on perinteisesti ollut hyvin turvallisuuspolitiikkaan panostava puolue. Vihreät <a href="https://www.vihreat.fi/ajankohtaista/suomen-viisaasti-yllapitama-nato-optio-on-nyt-lunastettava/" target="_new">kannattavat Nato-jäsenyyttä</a> ja Vihreillä oli kaikista puolueista korkein maanpuolustustahto sekä vahvin tahto jatkaa Ukrainan auttamista sekä aseellisesti että taloudellisesti (<a href="https://julkaisut.valtioneuvosto.fi/server/api/core/bitstreams/07e3069c-1d69-44c0-ac7b-32385384b200/content" target="_new">Puolustusministeriö, 2025</a>) 
     </div>
     <div class="shared-card">
-      <div class="shared-card-num">03</div>
+      <div class="shared-card-num">04</div>
       <h3>Markkinatalous &amp; yrittäjyys</h3>
       <p>Vihreät on 2010-luvulta lähtien ollut selvästi markkinaliberaalimpi kuin vasemmistopuolueet. Yrittäjyys, kilpailu ja kasvuhakuisuus ovat yhteinen lähtökohta.</p>
     </div>
     <div class="shared-card">
-      <div class="shared-card-num">04</div>
-      <h3>Liberaali demokratia</h3>
-      <p>Oikeusvaltio, yksilönvapaudet ja vähemmistöjen oikeudet. Nämä eivät ole neuvotteluvaluuttaa.</p>
-    </div>
-    <div class="shared-card">
       <div class="shared-card-num">05</div>
-      <h3>Osaamisperustainen maahanmuutto</h3>
-      <p>Suomi tarvitsee kansainvälisiä osaajia. Vihreät ei tasapainottele tässä — työperäinen maahanmuutto on kasvupolitiikkaa, ei kompromissi.</p>
+      <h3>Liberaali demokratia</h3>
+      <p>Oikeusvaltio, yksilönvapaudet ja vähemmistöjen oikeudet yhdistävät Vihreitä ja arvoliberaaleja Kokoomuslaisia.</p>
     </div>
     <div class="shared-card">
       <div class="shared-card-num">06</div>
+      <h3>Osaamisperustainen maahanmuutto</h3>
+      <p>Suomi tarvitsee kansainvälisiä osaajia. Vihreät ei tasapainottele tässä, työperäinen maahanmuutto on humaania ja kasvupolitiikkaa.</p>
+    </div>
+    <div class="shared-card">
+      <div class="shared-card-num">07</div>
       <h3>Urbaani Suomi</h3>
       <p>Kaupungit ovat talouden moottoreita. Tiivistyvät kaupunkiseudut tuottavat innovaatioita, verotuloja ja kasvua koko maalle.</p>
     </div>
@@ -506,35 +103,35 @@
 <section class="further">
   <div class="further-inner">
     <div class="section-label">02 — Missä Vihreät vie pidemmälle</div>
-    <h2 class="display">Sama arvo. Johdonmukaisempi linja.</h2>
+    <h2 class="display">Vihreät menevät joissain asioissa Kokoomusta pidemmälle.</h2>
     <div class="further-list">
       <div class="further-item">
         <div class="further-num">①</div>
         <div>
-          <h3>Ilmastopolitiikka markkinaehtoisesti.</h3>
+          <h3>Ilmastopolitiikkaa markkinaehtoisesti.</h3>
         </div>
-        <p>Päästökauppa ja hiilivero hinnoittelevat ulkoisvaikutukset markkinoille sen sijaan, että valtio sanelee ratkaisut sektori kerrallaan. Tämä on markkinataloudellinen argumentti, ei ympäristöaktivismi. Maailma siirtyy vähähiiliseen talouteen joka tapauksessa — kysymys on, onko Suomi siirtymässä ennakoijana vai perässähiihtäjänä.</p>
+        <p>Päästökauppa ja hiilivero hinnoittelevat ulkoisvaikutukset markkinoille sen sijaan, että valtio sanelee ratkaisut sektori kerrallaan. Tämä on markkinamekanismin käyttämistä aikamme suurien haasteiden ratkaisemiseksi. Emme halua halua olla niiden edessä toimettomina, mutta emme myöskään halua ajaa muutosta keskussunnittelemisella tai muuten jyrkällä sääntelyllä. Markkinat löytävät hyvät ratkaisut, mutta ne markkinat täytyy ensin luoda.</p>
       </div>
       <div class="further-item">
         <div class="further-num">②</div>
         <div>
-          <h3>Sivistysporvarius ilman leikkauksia.</h3>
+          <h3>Sivistysporvariutta aidoin panostuksin.</h3>
         </div>
-        <p>Sivistysporvaruus tarkoittaa, että koulutukseen investoiminen ei ole menokohta vaan tulonlähde: koulutettu väestö maksaa enemmän veroja, tarvitsee vähemmän tukia ja keksii ratkaisut, joita kukaan ei vielä osaa kysyä. Orpon hallitus on leikannut koulutuksesta peruskoulusta korkeakouluihin ja tutkimukseen. Jos koulutus oli sinulle syy äänestää Kokoomusta, kysy itseltäsi, kenen linja vastaa sitä tällä hetkellä paremmin.</p>
+        <p>Sivistysporvari näkee, että koulutukseen investoiminen ei ole menokohta vaan tulonlähde: koulutettu väestö maksaa enemmän veroja, tarvitsee vähemmän tukia ja keksii ratkaisut kysymyksiin, joita kukaan ei vielä osaa kysyä. Viimeisen 10v aikana on useaan otteeseen leikattu, ja Suomi on pudonnut OECD-vertailussa korkeakoulutettujen määrässä <a href="https://yle.fi/a/74-20181951" target="_new">keskiarvon alapuolelle</a>. Vihreät haluavat aidosti kääntää tämän kehityksen.</p>
       </div>
       <div class="further-item">
         <div class="further-num">③</div>
         <div>
-          <h3>Liberaali arvomaailma ilman koalitiojarrua.</h3>
+          <h3>Liberaali arvomaailma</h3>
         </div>
-        <p>Vihreissä arvoliberaali linja on hallitseva, ei tasapainoilua vaativa vähemmistöpositio. Maahanmuuttopolitiikka, vähemmistöjen oikeudet ja kansainväliset sopimukset pysyvät linjassa sen kanssa, mitä urbaani sivistysporvari tunnistaa omakseen — ilman koalitiopaineen tuomia takaaskelia.</p>
+        <p>Vihreissä arvoliberaali linja on hallitseva, eikä vain joukkue puolueen sisällä. Positiivinen suhtautuminen maahanmuuttoon, vähemmistöjen oikeudet ja sitoutuminen kansainvälisiin sopimukset ovat Vihreiden sisällä 100% jaettuja asioita, eikä Vihreiden jäsenenä tai äänestäjänä joudu pelkäämään että äänet valuvatkin arvokonservatiiveille.</p>
       </div>
       <div class="further-item">
         <div class="further-num">④</div>
         <div>
           <h3>Kaavoitus ja asumisen vapauttaminen.</h3>
         </div>
-        <p>Vihreät on Suomen selkein YIMBY-puolue: tiivistä rakentamista, kaavoituksen sujuvoittamista ja vanhojen asukkaiden veto-oikeuden poistamista uudisrakentamisesta. Tämä on markkinaratkaisu asuntopulaan, ei sen vastakohta.</p>
+        <p>Vihreät on Suomen selkein YIMBY-puolue: tiivistä rakentamista, kaavoituksen sujuvoittamista ja vanhojen asukkaiden veto-oikeuden poistamista uudisrakentamisesta. Tämä on markkinaratkaisu asuntopulaan ja asumisen hintaan kasvukeskuksissa.</p>
       </div>
     </div>
   </div>
@@ -546,37 +143,47 @@
     <div class="section-label">03 — Rehellinen osio</div>
     <h2 class="display">Milloin sinun <span class="accent">ei</span> kannata vaihtaa.</h2>
     <p class="dont-intro">
-      Vihreät ei ole jokaiselle kokoomuslaiselle parempi koti. Jos jokin seuraavista on pääsyysi äänestää kokoomusta, jää sinne.
+      Vihreät ei ole jokaiselle kokoomuslaiselle parempi koti. Jos jokin seuraavista on pääsyysi äänestää kokoomusta, olet jo oikeassa puolueessa.
     </p>
     <div class="dont-list">
       <div class="dont-card">
         <div class="dont-card-mark">✕</div>
         <h3>Olet arvomaailmaltasi konservatiivinen.</h3>
-        <p>Jos perinteinen perhekäsitys, kansallinen identiteetti ja varovaisuus yhteiskunnallisissa muutoksissa ovat sinulle tärkeimpiä, Vihreät ei ole sinulle koti. Vihreät on avoimesti liberaali ja progressiivinen puolue, eikä se muutu.</p>
+        <p>Jos moraalikäsityksesi perustuu negatiiviseen ihmiskuvaan ja kuriin, ja varovaisuus yhteiskunnallisissa muutoksissa on sinulle tärkeää, Vihreät ei ole sinulle koti. Vihreät on avoimesti liberaali ja eteenpäin katsova puolue, eikä se muutu.</p>
       </div>
       <div class="dont-card">
         <div class="dont-card-mark">✕</div>
         <h3>Sinulle tärkeintä on matala verotus.</h3>
-        <p>Vihreätkin haluaa tehokasta julkista sektoria ja pragmaattista verotusta, ei korotuksia sinänsä. Mutta jos verojen lasku on ehdoton ykkösasiasi kaiken muun edelle, kokoomuksen linja on suorempi.</p>
+        <p>Vihreätkin haluaa tehokasta julkista sektoria ja pragmaattista verotusta, mutta hyväksymme myös verotuksen noston jos se on esimerkiksi vaatimus koulutuspanostuksien tekemiseksi. Mutta jos verojen lasku on ehdoton ykkösasiasi kaiken muun edelle, kokoomuksen linja on suorempi.</p>
       </div>
       <div class="dont-card">
         <div class="dont-card-mark">✕</div>
         <h3>Ilmasto- ja ympäristöpolitiikka ei kuulu prioriteetteihisi.</h3>
-        <p>Tämä on aito linjaero, eikä siitä Vihreissä tingitä. Ympäristökysymykset ovat Vihreille politiikan lähtökohta, eivät lisäys muun politiikan päälle. Jos ympäristö on sinulle toissijainen, puolueet ovat eri linjoilla.</p>
+        <p>Tämä on aito linjaero, eikä siitä Vihreissä tingitä. Ympäristökysymykset ovat Vihreille politiikan lähtökohta, eivät lisäys muun politiikan päälle. Jos ajattelet että ympäristöpolitiikka on toissijaista muihin tavoitteisiin nähden, niin tässä kohtaa näkemyksemme eroavat.</p>
       </div>
       <div class="dont-card">
         <div class="dont-card-mark">✕</div>
         <h3>Haluat autoilun olevan halpaa kaupungissakin.</h3>
-        <p>Vihreät tekisi kaupunkiautoilusta markkinaehtoista: ruuhkamaksut, markkinahintainen pysäköinti ja autopaikkanormin purku. Autoilu sujuvoituu, mutta hinnoittelu muuttuu. Jos halpa kaupunkiautoilu on sinulle tärkeää, tämä ei ole sinun puolueesi.</p>
+        <p>Vihreät tekisi kaupunkiautoilusta markkinaehtoista: ruuhkamaksut, markkinahintainen pysäköinti ja autopaikkanormin purku. Haluamme että eri kulkumuodot asetetaan samalle viivalle, esimerkiksi pysäköinnistä aiheutuvat kulut pitäisi maksaa pysäköintiä käyttävien markkinalogiikan mukaisesti. Jos muiden tukemana saavutettu halpa kaupunkiautoilu on sinulle tärkeää, Vihreät ei ole sinun puolueesi.</p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- JOIN WHATSAPP -->
+<section class="next-step" id="next-step">
+  <div class="next-step-inner">
+    <h2 class="display">Tervetuloa WhatsApp-ryhmäämme!</span></h2>
+    <p>Jos emme vielä vakuuttaneet sinua, niin ei se mitään: ymmärrämme hyvin että puolueen vaihtaminen vaatii makustelua. Kutsumme sinut päätöksestäsi riippumatta hyväntahtoiseen täysin avoimeen markkinavihreiden WhatsApp-ryhmäämme. Tule keskustelemaan, tai vain nauttimaan eteenpäin katsovasta liberaalista ilmapiiristä!</p>
+    <a href="#" class="btn btn-primary">Liity markkinavihreiden avoimeen WhatsApp-ryhmään →</a>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final" id="liity">
   <div class="final-inner">
-    <h2 class="display">Vaihda kotiin,<br>joka <span class="accent">tunnistaa sinut.</span></h2>
+    <h2 class="display">Vaihda kotiin,<br>joka <span class="accent">jakaa arvosi.</span></h2>
     <p>Sama liberaali sivistysporvari. Sama markkinatalous. Sama länsimielisyys. Ilman kompromisseja, joita et tilannut.</p>
     <a href="#" class="btn btn-primary">Liity Vihreisiin →</a>
     <div class="final-secondary">
@@ -587,8 +194,36 @@
   </div>
 </section>
 
+<!-- FINAL CTA -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <h2 class="display">Sivuston tekijät</h2>
+    <div class="shared-grid">
+      <div class="shared-card">
+        <img src="https://laurilavanti.fi/images/Lauri-Lavanti-nojaamassa-kasiin/w=800,h=800,fit=crop,gravity=face,format=auto">
+        <h3>Lauri Lavanti</h3>
+        <p>Lauri Lavanti on johtava ohjelmistokehittäjä, Kirkkonummen kunnanvaltuutettu sekä Vihreän valtuustoryhmän puheenjohtaja. Hän on Aalto-yliopistosta valmistunut diplomi-insinööri ja keskittyy tekoälyyn, talouteen, yrittäjyyteen, innovaatiopolitiikkaan sekä digitaaliseen riippumattomuuteen.</p>
+        <p><a href="https://laurilavanti.fi/fi/" target="_new" class="btn btn-primary btn-sm">🌐 laurilavanti.fi</a></p>
+      </div>
+      <div class="shared-card">
+        <img src="https://laurilavanti.fi/images/Lauri-Lavanti-nojaamassa-kasiin/w=800,h=800,fit=crop,gravity=face,format=auto">
+        <h3>Lauri Lavanti</h3>
+        <p>Lauri Lavanti on johtava ohjelmistokehittäjä, Kirkkonummen kunnanvaltuutettu sekä Vihreän valtuustoryhmän puheenjohtaja. Hän on Aalto-yliopistosta valmistunut diplomi-insinööri ja keskittyy tekoälyyn, talouteen, yrittäjyyteen, innovaatiopolitiikkaan sekä digitaaliseen riippumattomuuteen.</p>
+        <p><a href="https://laurilavanti.fi/fi/" target="_new" class="btn btn-primary btn-sm">🌐 laurilavanti.fi</a></p>
+      </div>
+      <div class="shared-card">
+        <img src="https://laurilavanti.fi/images/Lauri-Lavanti-nojaamassa-kasiin/w=800,h=800,fit=crop,gravity=face,format=auto">
+        <h3>Lauri Lavanti</h3>
+        <p>Lauri Lavanti on johtava ohjelmistokehittäjä, Kirkkonummen kunnanvaltuutettu sekä Vihreän valtuustoryhmän puheenjohtaja. Hän on Aalto-yliopistosta valmistunut diplomi-insinööri ja keskittyy tekoälyyn, talouteen, yrittäjyyteen, innovaatiopolitiikkaan sekä digitaaliseen riippumattomuuteen.</p>
+        <p><a href="https://laurilavanti.fi/fi/" target="_new" class="btn btn-primary btn-sm">🌐 laurilavanti.fi</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <footer>
-  vaihdavihreisiin.fi — riippumaton kampanjasivusto · ei Vihreä liitto rp:n virallinen sivusto
+  vaihdavihreisiin.fi on riippumaton kampanjasivusto · ei Vihreä liitto rp:n virallinen sivusto
 </footer>
 
 </body>
