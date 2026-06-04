@@ -2,34 +2,43 @@
     --vihrea: #6EB82A;
     --vihrea-tumma: #2E5E1A;
     --metsa: #1A3A1A;
-    --kerma: #F4EFE3;
-    --kerma-syva: #EAE2CE;
+    --kerma: #EFEEE9;
+    --kerma-syva: #E2E1DB;
     --terra: #C95B3D;
     --aurinko: #E8B931;
     --taivas: #8AB6D6;
     --musta: #161A14;
     --harmaa: #6B6F66;
     --kokoomus: #003a54;
+    --text-accent: var(--musta);
+    --vihreat-brand: #006845;
+    --font-primary: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-base: 17px;
+    --content-max: 800px;
+    --header-height: 79px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-family: var(--font-primary);
     background: var(--kerma);
     color: var(--musta);
     line-height: 1.55;
-    font-size: 17px;
+    font-size: var(--font-base);
     -webkit-font-smoothing: antialiased;
   }
   .display {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.025em;
     font-variation-settings: "opsz" 96;
   }
   .display-sm {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.02em;
@@ -44,37 +53,18 @@
     background: var(--kerma);
     border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 18px 32px;
+  }
+  .nav-inner {
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
   }
   .logo {
     display: flex; align-items: center; gap: 12px;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-primary);
     font-weight: 800; font-size: 18px;
     letter-spacing: -0.01em;
-  }
-  .logo-mark {
-    width: 32px; height: 32px;
-    background: var(--vihrea);
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-  }
-  .logo-mark::before, .logo-mark::after {
-    content: ''; position: absolute;
-    background: var(--vihrea-tumma);
-    opacity: 0.35;
-  }
-  .logo-mark::before {
-    width: 100%; height: 2px;
-    top: 50%; left: 0;
-  }
-  .logo-mark::after {
-    width: 70%; height: 70%;
-    border: 2px solid var(--vihrea-tumma);
-    border-radius: 50%;
-    top: 15%; left: 15%;
-    background: transparent;
-    opacity: 0.4;
   }
   .nav-cta {
     background: var(--musta); color: var(--kerma);
@@ -87,31 +77,39 @@
   /* HERO */
   .hero {
     padding: 80px 32px 100px;
-    max-width: 1280px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
     position: relative;
+    text-align: center;
+    min-height: calc(100svh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--kerma-syva);
-    padding: 8px 16px; border-radius: 999px;
-    font-size: 14px; font-weight: 500;
-    margin-bottom: 36px;
+  .hero-morph {
+    display: block;
+    width: clamp(180px, 24vw, 260px);
+    height: auto;
+    margin: 0 auto 36px;
+    overflow: visible;
   }
-  .hero-tag-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--terra);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
+  .morph-target {
+    visibility: hidden;
   }
   .hero h1 {
-    font-size: clamp(48px, 9vw, 128px);
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: clamp(42px, 6vw, 80px);
     margin-bottom: 32px;
     max-width: 16ch;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .hero h1 .accent { color: var(--vihrea); }
+  .hero-line {
+    display: block;
+    will-change: transform, opacity, filter;
+  }
+  .hero h1 .kokoomus { color: var(--text-accent); }
+  .hero h1 .accent { color: var(--vihreat-brand); }
   .hero h1 .strike {
     position: relative; display: inline-block;
     color: var(--harmaa);
@@ -123,9 +121,10 @@
     transform: rotate(-2deg);
   }
   .hero-sub {
-    font-size: 22px; max-width: 56ch;
+    font-size: var(--font-base); max-width: 48ch;
+    font-weight: 500;
     color: var(--musta);
-    margin-bottom: 48px;
+    margin: 0 auto 24px;
     line-height: 1.45;
   }
   .hero-cta-row {
@@ -139,6 +138,26 @@
     border: none; cursor: pointer;
   }
   .btn-sm { padding: 4px 12px !important; font-size: 14px !important; border-radius: 5px !important; }
+  .btn-outline-medium {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    border: 2px solid var(--musta);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--musta);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    transition: background-color .2s, color .2s, transform .2s;
+  }
+  .btn-outline-medium:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--musta);
+    transform: translateY(-1px);
+  }
   .btn-primary { background: var(--vihrea); color: var(--metsa); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
   .btn-ghost {
@@ -147,13 +166,6 @@
   }
   .btn-ghost:hover { background: var(--musta); color: var(--kerma); }
 
-  .hero-globe {
-    position: absolute;
-    top: 80px; right: -40px;
-    width: 320px; height: 320px;
-    opacity: 0.95;
-  }
-
   /* HONEST INTRO */
   .honest {
     background: var(--metsa);
@@ -161,7 +173,7 @@
     padding: 100px 32px;
   }
   .honest-inner {
-    max-width: 900px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .honest-label {
     font-size: 13px; font-weight: 600;
@@ -183,7 +195,7 @@
   /* SHARED VALUES */
   .section {
     padding: 120px 32px;
-    max-width: 1280px; margin: 0 auto;
+    max-width: calc(var(--content-max) + 64px); margin: 0 auto;
   }
   .section-label {
     font-size: 13px; font-weight: 600;
@@ -213,13 +225,13 @@
     overflow: hidden;
   }
   .shared-card-num {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 14px;
     color: var(--vihrea-tumma);
     margin-bottom: 16px;
   }
   .shared-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 22px;
     line-height: 1.15; letter-spacing: -0.01em;
     margin-bottom: 12px;
@@ -236,7 +248,7 @@
     padding: 120px 32px;
   }
   .further-inner {
-    max-width: 1280px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .further .section-label { color: var(--metsa); }
   .further .section-label::before { background: var(--metsa); }
@@ -254,12 +266,12 @@
   }
   .further-item:last-child { border-bottom: 2px solid var(--metsa); }
   .further-num {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 32px;
     line-height: 1;
   }
   .further-item h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 28px;
     line-height: 1.1; letter-spacing: -0.01em;
   }
@@ -274,7 +286,7 @@
     position: relative;
   }
   .dont-inner {
-    max-width: 1100px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .dont .section-label { color: var(--terra); }
   .dont .section-label::before { background: var(--terra); }
@@ -305,10 +317,10 @@
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 18px;
     margin-bottom: 16px;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
   }
   .dont-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 19px;
     line-height: 1.15; margin-bottom: 8px;
   }
@@ -335,7 +347,7 @@
     color: var(--metsa);
   }
   .who-inner {
-    max-width: 1100px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
     align-items: center;
   }
@@ -356,7 +368,7 @@
   }
   .who li::before {
     content: '→';
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; color: var(--vihrea);
     font-size: 22px;
   }
@@ -369,7 +381,7 @@
     text-align: left;
   }
   .next-step-inner {
-    max-width: 900px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .next-step h2 {
     font-size: clamp(36px, 5vw, 64px);
@@ -404,7 +416,7 @@
     text-align: center;
   }
   .final-inner {
-    max-width: 900px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .final h2 {
     font-size: clamp(48px, 8vw, 96px);
@@ -439,7 +451,7 @@
     text-align: left;
   }
   .about-inner {
-    max-width: 900px; margin: 0 auto;
+    max-width: var(--content-max); margin: 0 auto;
   }
   .about-inner .shared-card h3 {
     color: var(--metsa);
@@ -497,7 +509,7 @@
     display: block;
   }
   .person-card h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-display);
     font-weight: 800; font-size: 20px;
     line-height: 1.1; letter-spacing: -0.01em;
     color: var(--kerma);
@@ -564,9 +576,9 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
+    :root { --header-height: 72px; }
     .hero { padding: 48px 24px 60px; }
-    .hero h1 { font-size: clamp(40px, 12vw, 64px); }
-    .hero-globe { display: none; }
+    .hero h1 { font-size: clamp(40px, 11vw, 58px); }
     .section { padding: 80px 24px; }
     .honest, .further, .dont, .who, .final { padding: 80px 24px; }
     .who-inner { grid-template-columns: 1fr; gap: 32px; }
