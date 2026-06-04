@@ -429,12 +429,6 @@
   .about-inner {
     max-width: 900px; margin: 0 auto;
   }
-  .about-inner img {
-    border-radius: 50%;
-    background-color: #fff;
-    max-width: 320px;
-    width: 100%;
-  }
   .about-inner .shared-card h3 {
     color: var(--metsa);
   }
