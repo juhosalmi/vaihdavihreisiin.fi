@@ -6,6 +6,7 @@
     --kerma-syva: #E2E1DB;
     --surface-elevation-1-greige: #E8E5DD;
     --surface-elevation-1-green: #DDE3D4;
+    --surface-elevation-1-dark-green: #294829;
     --terra: #C95B3D;
     --aurinko: #E8B931;
     --taivas: #8AB6D6;
@@ -15,7 +16,6 @@
     --text-accent: var(--musta);
     --vihreat-brand: #006845;
     --font-primary: 'Hanken Grotesk', system-ui, sans-serif;
-    --font-display: 'Bricolage Grotesque', sans-serif;
     --font-base: 17px;
     --content-max: 800px;
     --header-height: 79px;
@@ -37,14 +37,13 @@
     -webkit-font-smoothing: antialiased;
   }
   .display {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.025em;
-    font-variation-settings: "opsz" 96;
   }
   .display-sm {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.02em;
@@ -85,14 +84,11 @@
     letter-spacing: -0.01em;
   }
   .logo-vihreisiin { color: var(--vihreat-brand); }
-  .nav-cta {
-    background: var(--musta); color: var(--kerma);
-    padding: 10px 22px; border-radius: 999px;
-    text-decoration: none; font-weight: 600; font-size: 15px;
-    transition: transform .2s;
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .nav-cta:hover { transform: translateY(-1px); }
-
   /* HERO */
   .hero {
     padding: 80px 32px 100px;
@@ -175,6 +171,22 @@
     background: rgba(0, 0, 0, 0.08);
     color: var(--musta);
   }
+  .btn-outline-sm {
+    background: transparent;
+    color: var(--musta);
+    border: 1px solid var(--musta);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 6px 14px;
+    transition: none;
+  }
+  .btn-outline-sm:hover {
+    background: rgba(0, 0, 0, 0.08);
+    transform: none;
+    box-shadow: none;
+  }
   .btn-outline-light {
     border-color: var(--kerma);
     color: var(--kerma);
@@ -186,13 +198,31 @@
   .section-action {
     margin-top: 32px;
   }
-  .btn-primary { background: var(--vihrea); color: var(--metsa); }
+  .btn-primary {
+    background: var(--vihrea);
+    color: var(--metsa);
+    border-radius: var(--radius-card);
+  }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
   .btn-contained-lg {
     background: var(--musta); color: var(--kerma);
     font-size: 20px; padding: 22px 40px;
+    border-radius: var(--radius-card);
+    transition: none;
+  }
+  .btn-contained-sm {
+    background: var(--musta);
+    color: var(--kerma);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 15px;
     border-radius: 999px;
     transition: none;
+  }
+  .btn-contained-sm:hover {
+    background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), var(--musta);
+    transform: none;
+    box-shadow: none;
   }
   .btn-contained-lg:hover {
     background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), var(--musta);
@@ -222,7 +252,7 @@
   .honest h2 {
     font-size: clamp(36px, 5vw, 64px);
     margin-bottom: 32px;
-    max-width: 22ch;
+    max-width: 16ch;
   }
   #honest h2 {
     font-family: var(--font-primary);
@@ -448,6 +478,7 @@
   .who .section-label::before { background: var(--metsa); }
   .who h2 {
     font-size: clamp(36px, 5vw, 56px);
+    max-width: 16ch;
     margin-bottom: 16px;
   }
   .who ul {
@@ -461,7 +492,7 @@
   }
   .who li::before {
     content: '→';
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-weight: 800; color: var(--vihrea);
     font-size: 22px;
   }
@@ -480,6 +511,7 @@
     font-family: var(--font-primary);
     font-size: clamp(42px, 6vw, 80px);
     font-weight: 800;
+    max-width: 16ch;
     margin-bottom: 32px;
     line-height: 0.95;
   }
@@ -514,18 +546,28 @@
     text-align: center;
   }
   .final-inner {
-    max-width: var(--content-max); margin: 0 auto;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .final h2 {
-    font-size: clamp(48px, 8vw, 96px);
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+    max-width: 16ch;
     margin-bottom: 32px;
     line-height: 0.95;
   }
   .final h2 .accent { color: var(--vihrea); }
   .final p {
-    font-size: 20px; opacity: 0.85;
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0.92;
     margin-bottom: 48px;
-    max-width: 50ch; margin-left: auto; margin-right: auto;
+    max-width: 56ch; margin-left: auto; margin-right: auto;
   }
   .final .btn-primary {
     font-size: 20px; padding: 22px 40px;
@@ -555,7 +597,10 @@
     color: var(--metsa);
   }
   .about h2 {
+    font-family: var(--font-primary);
+    font-weight: 800;
     font-size: clamp(36px, 5vw, 64px);
+    max-width: 16ch;
     margin-bottom: 32px;
     line-height: 0.95;
   }
@@ -587,7 +632,7 @@
     gap: 28px;
   }
   .person-card {
-    background: rgba(255,255,255,0.08);
+    background: var(--surface-elevation-1-dark-green);
     border: 1px solid rgba(255,255,255,0.14);
     border-radius: var(--radius-card);
     padding: 28px;
@@ -595,7 +640,7 @@
     flex-direction: column;
     gap: 14px;
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 1px 0 rgba(255, 255, 255, 0.18) inset,
       0 14px 34px rgba(0, 0, 0, 0.16);
   }
   .person-photo {
@@ -611,23 +656,26 @@
   }
   .person-card h3 {
     font-family: var(--font-primary);
-    font-weight: 800; font-size: 20px;
-    line-height: 1.1; letter-spacing: -0.01em;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     color: var(--kerma);
-    margin: 0;
+    margin: 10px 0 0;
   }
   .person-card p {
-    font-size: 14px; line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.55;
     color: var(--kerma);
-    opacity: 0.75;
+    opacity: 0.92;
     margin: 0;
     flex: 1;
   }
   .candidate-badge {
     display: inline-block;
     align-self: flex-start;
-    background: var(--vihrea);
-    color: var(--vihrea-tumma);
+    background: var(--kerma);
+    color: var(--text-accent);
     font-size: 12px;
     font-weight: 600;
     line-height: 1;
@@ -681,11 +729,14 @@
     .hero { padding: 48px 24px 60px; }
     .hero h1, #honest h2, #yhteistä h2 { font-size: clamp(40px, 11vw, 58px); }
     .section { padding: 80px 24px; }
-    .honest, .further, .dont, .who, .final { padding: 80px 24px; }
+    .honest, .further, .dont, .who, .final, .about { padding: 80px 24px; }
     .who-inner { grid-template-columns: 1fr; gap: 32px; }
     .further-item {
       grid-template-columns: 1fr;
       gap: 12px;
     }
     nav { padding: 14px 20px; }
+  }
+  @media (max-width: 599px) {
+    .nav-whatsapp { display: none; }
   }
