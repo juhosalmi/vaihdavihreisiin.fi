@@ -482,11 +482,13 @@
   .person-photo {
     width: 80px; height: 80px;
     min-width: 80px; min-height: 80px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
     background: var(--vihrea-tumma);
     flex-shrink: 0;
+    align-self: flex-start;
     display: block;
   }
   .person-card h3 {
