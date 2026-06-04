@@ -188,6 +188,17 @@
   }
   .btn-primary { background: var(--vihrea); color: var(--metsa); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
+  .btn-contained-lg {
+    background: var(--musta); color: var(--kerma);
+    font-size: 20px; padding: 22px 40px;
+    border-radius: 999px;
+    transition: none;
+  }
+  .btn-contained-lg:hover {
+    background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), var(--musta);
+    transform: none;
+    box-shadow: none;
+  }
   .btn-ghost {
     background: transparent; color: var(--musta);
     border: 1.5px solid var(--musta);
