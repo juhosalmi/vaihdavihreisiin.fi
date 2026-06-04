@@ -481,11 +481,13 @@
   }
   .person-photo {
     width: 80px; height: 80px;
+    min-width: 80px; min-height: 80px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
     background: var(--vihrea-tumma);
     flex-shrink: 0;
+    display: block;
   }
   .person-card h3 {
     font-family: 'Bricolage Grotesque', sans-serif;
