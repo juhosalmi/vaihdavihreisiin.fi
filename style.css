@@ -458,6 +458,79 @@
   }
   .about-secondary a:hover { opacity: 1; }
 
+  /* PERSON CARDS (about section) */
+  .about-intro {
+    font-size: 18px; line-height: 1.55;
+    max-width: 60ch;
+    opacity: 0.85;
+    margin-bottom: 56px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+  }
+  .person-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .person-photo {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    background: var(--vihrea-tumma);
+    flex-shrink: 0;
+  }
+  .person-card h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 20px;
+    line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--kerma);
+    margin: 0;
+  }
+  .person-card p {
+    font-size: 14px; line-height: 1.55;
+    color: var(--kerma);
+    opacity: 0.75;
+    margin: 0;
+    flex: 1;
+  }
+  .person-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .person-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--kerma);
+    opacity: 0.65;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity .15s;
+    padding: 4px 0;
+  }
+  .person-links a:hover { opacity: 1; }
+  .person-links svg {
+    width: 18px; height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .person-links .link-website {
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+
   /* FOOTER */
   footer {
     background: var(--metsa);
