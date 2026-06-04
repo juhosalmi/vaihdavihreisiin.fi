@@ -479,7 +479,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 20px 20px 0 0;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     background: var(--vihrea-tumma);
     flex-shrink: 0;
     display: block;
