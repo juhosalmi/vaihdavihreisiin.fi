@@ -522,9 +522,10 @@
     padding: 4px 0;
   }
   .person-links a:hover { opacity: 1; }
-  .person-links svg {
-    width: 18px; height: 18px;
-    fill: currentColor;
+  .person-links i {
+    font-size: 18px;
+    width: 18px;
+    text-align: center;
     flex-shrink: 0;
   }
   .person-links .link-website {
