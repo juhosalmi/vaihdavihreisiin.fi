@@ -4,6 +4,8 @@
     --metsa: #1A3A1A;
     --kerma: #EFEEE9;
     --kerma-syva: #E2E1DB;
+    --surface-elevation-1-greige: #E8E5DD;
+    --surface-elevation-1-green: #DDE3D4;
     --terra: #C95B3D;
     --aurinko: #E8B931;
     --taivas: #8AB6D6;
@@ -17,10 +19,14 @@
     --font-base: 17px;
     --content-max: 800px;
     --header-height: 79px;
+    --radius-card: 16px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html {
     scroll-behavior: smooth;
+  }
+  section[id] {
+    scroll-margin-top: var(--header-height);
   }
   body {
     font-family: var(--font-primary);
@@ -54,6 +60,18 @@
     border-bottom: 1px solid rgba(0,0,0,0.08);
     padding: 18px 32px;
   }
+  @supports (animation-timeline: scroll()) {
+    nav {
+      border-bottom-color: transparent;
+      animation: reveal-header-border linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 16px;
+    }
+
+    @keyframes reveal-header-border {
+      to { border-bottom-color: rgba(0,0,0,0.08); }
+    }
+  }
   .nav-inner {
     width: 100%;
     max-width: var(--content-max);
@@ -63,9 +81,10 @@
   .logo {
     display: flex; align-items: center; gap: 12px;
     font-family: var(--font-primary);
-    font-weight: 800; font-size: 18px;
+    font-weight: 800; font-size: 23.4px;
     letter-spacing: -0.01em;
   }
+  .logo-vihreisiin { color: var(--vihreat-brand); }
   .nav-cta {
     background: var(--musta); color: var(--kerma);
     padding: 10px 22px; border-radius: 999px;
@@ -151,12 +170,21 @@
     font-size: 15px;
     font-weight: 600;
     line-height: 1.5;
-    transition: background-color .2s, color .2s, transform .2s;
   }
   .btn-outline-medium:hover {
     background: rgba(0, 0, 0, 0.08);
     color: var(--musta);
-    transform: translateY(-1px);
+  }
+  .btn-outline-light {
+    border-color: var(--kerma);
+    color: var(--kerma);
+  }
+  .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--kerma);
+  }
+  .section-action {
+    margin-top: 32px;
   }
   .btn-primary { background: var(--vihrea); color: var(--metsa); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(110, 184, 42, 0.3); }
@@ -185,10 +213,19 @@
     margin-bottom: 32px;
     max-width: 22ch;
   }
+  #honest h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+  }
   .honest p {
     font-size: 20px; line-height: 1.5;
     max-width: 60ch;
     opacity: 0.92;
+  }
+  #honest p {
+    font-size: var(--font-base);
+    font-weight: 500;
   }
   .honest p + p { margin-top: 18px; }
 
@@ -211,6 +248,17 @@
     margin-bottom: 48px;
     max-width: 16ch;
   }
+  #yhteistä h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+  }
+  #yhteistä .section-intro {
+    max-width: 56ch;
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.5;
+  }
   .shared-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -218,32 +266,44 @@
     margin-top: 60px;
   }
   .shared-card {
-    background: var(--kerma-syva);
+    background: var(--surface-elevation-1-greige);
     padding: 32px;
-    border-radius: 24px;
+    border-radius: var(--radius-card);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(26, 58, 26, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.45) inset,
+      0 10px 24px rgba(22, 26, 20, 0.05);
   }
-  .shared-card-num {
-    font-family: var(--font-display);
-    font-weight: 800; font-size: 14px;
-    color: var(--vihrea-tumma);
-    margin-bottom: 16px;
-  }
-  .shared-card h3 {
-    font-family: var(--font-display);
-    font-weight: 800; font-size: 22px;
-    line-height: 1.15; letter-spacing: -0.01em;
+  .shared-card h3,
+  .further-item h3,
+  .dont-card h3 {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text-accent);
     margin-bottom: 12px;
   }
-  .shared-card p {
-    font-size: 15px; color: var(--harmaa);
+  .shared-card p,
+  .further-item p,
+  .dont-card p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-accent);
     margin-bottom: 1rem;
+  }
+  @media (min-width: 769px) {
+    .shared-card--wide {
+      grid-column: span 2;
+    }
   }
 
   /* WHERE FURTHER */
   .further {
-    background: var(--vihrea);
+    background: #D3DBCA;
     color: var(--metsa);
     padding: 120px 32px;
   }
@@ -252,33 +312,34 @@
   }
   .further .section-label { color: var(--metsa); }
   .further .section-label::before { background: var(--metsa); }
-  .further h2 { color: var(--metsa); }
+  .further h2 {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--metsa);
+    max-width: 16ch;
+    margin-bottom: 48px;
+  }
   .further-list {
-    display: grid; gap: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
     margin-top: 60px;
   }
   .further-item {
-    display: grid;
-    grid-template-columns: 80px 1fr 2fr;
-    gap: 32px; padding: 40px 0;
-    border-top: 2px solid var(--metsa);
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: var(--surface-elevation-1-green);
+    border: 1px solid rgba(26, 58, 26, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.55) inset,
+      0 10px 24px rgba(22, 26, 20, 0.05);
   }
-  .further-item:last-child { border-bottom: 2px solid var(--metsa); }
-  .further-num {
-    font-family: var(--font-display);
-    font-weight: 800; font-size: 32px;
-    line-height: 1;
-  }
-  .further-item h3 {
-    font-family: var(--font-display);
-    font-weight: 800; font-size: 28px;
-    line-height: 1.1; letter-spacing: -0.01em;
-  }
-  .further-item p {
-    font-size: 17px; line-height: 1.55;
-  }
-
   /* DON'T SWITCH */
   .dont {
     background: var(--kerma);
@@ -301,44 +362,65 @@
   }
   .dont-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  #milloin-ei h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    max-width: 16ch;
+    margin-bottom: 48px;
+  }
+  #milloin-ei .dont-intro {
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 56ch;
+    margin-bottom: 60px;
   }
   .dont-card {
-    background: white;
-    border: 2px solid var(--musta);
-    padding: 28px; border-radius: 20px;
+    background: var(--surface-elevation-1-greige);
+    padding: 32px;
+    border-radius: var(--radius-card);
     position: relative;
+    border: 1px solid rgba(26, 58, 26, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.45) inset,
+      0 10px 24px rgba(22, 26, 20, 0.05);
   }
-  .dont-card-mark {
-    width: 36px; height: 36px;
-    background: var(--terra); color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 18px;
-    margin-bottom: 16px;
-    font-family: var(--font-display);
-  }
-  .dont-card h3 {
-    font-family: var(--font-display);
-    font-weight: 800; font-size: 19px;
-    line-height: 1.15; margin-bottom: 8px;
-  }
-  .dont-card p {
-    font-size: 15px; color: var(--harmaa); line-height: 1.5;
-  }
-
   /* MANIFESTI */
   .honest .section-label { color: var(--vihrea); }
   .honest .section-label::before { background: var(--vihrea); }
   .manifesti-lead {
-    font-size: 22px !important;
-    font-weight: 500;
+    font-size: 19px !important;
+    font-weight: 300;
+    line-height: 1.5;
     opacity: 1 !important;
+    max-width: 56ch;
+    margin-bottom: 60px;
+  }
+  #manifesti h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    max-width: 16ch;
+    margin-bottom: 48px;
+  }
+  #manifesti p:not(.manifesti-lead) {
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 56ch;
   }
   .manifesti {
     border-bottom: 1px solid rgba(255,255,255,0.12);
   }
+
 
   /* WHO */
   .who {
@@ -375,8 +457,8 @@
 
   /* NEXT STEP (WHATSAPP) */
   .next-step {
-    background: var(--metsa);
-    color: var(--kerma);
+    background: var(--kerma);
+    color: var(--musta);
     padding: 120px 32px;
     text-align: left;
   }
@@ -384,15 +466,20 @@
     max-width: var(--content-max); margin: 0 auto;
   }
   .next-step h2 {
-    font-size: clamp(36px, 5vw, 64px);
+    font-family: var(--font-primary);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
     margin-bottom: 32px;
     line-height: 0.95;
   }
   .next-step h2 .accent { color: var(--vihrea); }
   .next-step p {
-    font-size: 20px; opacity: 0.85;
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 56ch;
+    opacity: 0.92;
     margin-bottom: 48px;
-    margin-left: auto; margin-right: auto;
   }
   .next-step .btn-primary {
     font-size: 20px; padding: 22px 40px;
@@ -489,19 +576,22 @@
     gap: 28px;
   }
   .person-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-card);
     padding: 28px;
     display: flex;
     flex-direction: column;
     gap: 14px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 14px 34px rgba(0, 0, 0, 0.16);
   }
   .person-photo {
     width: calc(100% + 56px);
     margin: -28px -28px 0;
     aspect-ratio: 1 / 1;
-    border-radius: 20px 20px 0 0;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
     object-fit: cover;
     object-position: center;
     background: var(--vihrea-tumma);
@@ -509,7 +599,7 @@
     display: block;
   }
   .person-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-weight: 800; font-size: 20px;
     line-height: 1.1; letter-spacing: -0.01em;
     color: var(--kerma);
@@ -578,7 +668,7 @@
   @media (max-width: 768px) {
     :root { --header-height: 72px; }
     .hero { padding: 48px 24px 60px; }
-    .hero h1 { font-size: clamp(40px, 11vw, 58px); }
+    .hero h1, #honest h2, #yhteistä h2 { font-size: clamp(40px, 11vw, 58px); }
     .section { padding: 80px 24px; }
     .honest, .further, .dont, .who, .final { padding: 80px 24px; }
     .who-inner { grid-template-columns: 1fr; gap: 32px; }
