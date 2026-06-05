@@ -646,10 +646,10 @@
   .person-photo {
     width: calc(100% + 56px);
     margin: -28px -28px 0;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4;
     border-radius: var(--radius-card) var(--radius-card) 0 0;
     object-fit: cover;
-    object-position: center;
+    object-position: center top;
     background: var(--vihrea-tumma);
     flex-shrink: 0;
     display: block;
