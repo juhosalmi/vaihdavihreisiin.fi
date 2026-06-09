@@ -100,15 +100,13 @@
     flex-direction: column;
     justify-content: center;
   }
-  .hero-morph {
-    display: block;
-    width: clamp(180px, 24vw, 260px);
-    height: auto;
-    margin: 0 auto 36px;
-    overflow: visible;
-  }
-  .morph-target {
-    visibility: hidden;
+  .hero-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--musta);
+    opacity: 0.6;
+    margin-bottom: 12px;
+    will-change: transform, opacity, filter;
   }
   .hero h1 {
     font-family: var(--font-primary);
@@ -123,7 +121,7 @@
     display: block;
     will-change: transform, opacity, filter;
   }
-  .hero h1 .kokoomus { color: var(--text-accent); }
+  .hero h1 .hero-welcome { font-weight: 400; }
   .hero h1 .accent { color: var(--vihreat-brand); }
   .hero h1 .strike {
     position: relative; display: inline-block;
@@ -585,6 +583,35 @@
     text-decoration: underline; text-underline-offset: 4px;
   }
   .next-step-secondary a:hover { opacity: 1; }
+
+  /* JÄRJESTÖT */
+  .orgs { background: var(--kerma); padding: 80px 24px; }
+  .orgs-inner { max-width: var(--content-max); margin: 0 auto; }
+  .orgs h2 { margin-bottom: 16px; }
+  .orgs-inner > p { margin-bottom: 40px; opacity: 0.7; }
+  .orgs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .org-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--musta);
+    background: white;
+    transition: border-color .2s, transform .2s;
+  }
+  .org-card:hover {
+    border-color: var(--vihreat-brand);
+    transform: translateY(-2px);
+  }
+  .org-name { font-weight: 600; font-size: 16px; }
+  .org-desc { font-size: 14px; opacity: 0.7; line-height: 1.4; }
 
   /* FINAL CTA */
   .final {
