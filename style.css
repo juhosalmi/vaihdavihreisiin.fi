@@ -714,6 +714,45 @@
     padding: 4px 10px;
   }
 
+  /* MEDIA CONTACT */
+  .media {
+    background: var(--metsa);
+    color: var(--kerma);
+    padding: 80px 32px 60px;
+    text-align: left;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .media-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .media h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+  .media-contact-name {
+    font-size: var(--font-base);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .media-contact-details {
+    font-size: var(--font-base);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  .media-contact-details a {
+    color: var(--kerma);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    opacity: 0.92;
+  }
+  .media-contact-details a:hover {
+    opacity: 1;
+  }
+
   /* FOOTER */
   footer {
     background: var(--metsa);
@@ -729,7 +768,7 @@
     .hero { padding: 48px 24px 60px; }
     .hero h1, #honest h2, #yhteistä h2 { font-size: clamp(40px, 11vw, 58px); }
     .section { padding: 80px 24px; }
-    .honest, .further, .dont, .who, .final, .about { padding: 80px 24px; }
+    .honest, .further, .dont, .who, .final, .about, .media { padding: 80px 24px; }
     .who-inner { grid-template-columns: 1fr; gap: 32px; }
     .further-item {
       grid-template-columns: 1fr;
