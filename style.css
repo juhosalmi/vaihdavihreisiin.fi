@@ -235,6 +235,54 @@
   }
   .btn-ghost:hover { background: var(--musta); color: var(--kerma); }
 
+  /* TOP PRINCIPLE QUOTE */
+  .principle-quote {
+    background: var(--vihreat-brand);
+    color: var(--kerma);
+    padding: 96px 32px;
+  }
+  .principle-quote-inner {
+    max-width: var(--content-max); margin: 0 auto;
+    text-align: center;
+  }
+  .principle-quote-label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--vihrea); margin-bottom: 32px;
+    opacity: 0.95;
+  }
+  .principle-quote-text {
+    margin: 0 0 28px;
+    padding: 0;
+    border: none;
+  }
+  .principle-quote-text p {
+    font-family: var(--font-primary);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+    max-width: 28ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .principle-quote-source {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--kerma);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(239, 238, 233, 0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+  }
+  .principle-quote-source:hover {
+    border-bottom-color: var(--kerma);
+  }
+  @media (max-width: 640px) {
+    .principle-quote { padding: 72px 24px; }
+  }
+
   /* HONEST INTRO */
   .honest {
     background: var(--metsa);
