@@ -107,14 +107,6 @@
     margin: 0 auto 32px;
     will-change: transform, opacity, filter;
   }
-  .hero-label {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--musta);
-    opacity: 0.6;
-    margin-bottom: 12px;
-    will-change: transform, opacity, filter;
-  }
   .hero h1 {
     font-family: var(--font-primary);
     font-weight: 800;
@@ -488,14 +480,6 @@
   /* MANIFESTI */
   .honest .section-label { color: var(--vihrea); }
   .honest .section-label::before { background: var(--vihrea); }
-  .manifesti-lead {
-    font-size: 19px !important;
-    font-weight: 300;
-    line-height: 1.5;
-    opacity: 1 !important;
-    max-width: 56ch;
-    margin-bottom: 60px;
-  }
   #manifesti h2 {
     font-family: var(--font-primary);
     font-size: clamp(42px, 6vw, 80px);
@@ -505,7 +489,7 @@
     max-width: 16ch;
     margin-bottom: 48px;
   }
-  #manifesti p:not(.manifesti-lead) {
+  #manifesti p {
     font-size: var(--font-base);
     font-weight: 500;
     line-height: 1.5;
