@@ -845,6 +845,9 @@
     }
     nav { padding: 14px 20px; }
   }
+  .nav-lang-short { display: none; }
   @media (max-width: 599px) {
     .nav-whatsapp { display: none; }
+    .nav-lang-long { display: none; }
+    .nav-lang-short { display: inline; }
   }
