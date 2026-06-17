@@ -291,7 +291,7 @@ nav {
 .person-image {
   width: clamp(140px, 85vw, 280px);
   height: clamp(140px, 85vw, 280px);
-  border-radius: 50%;
+  border-radius: var(--radius-card);
   object-fit: cover;
   border: 4px solid var(--vihrea);
 }
