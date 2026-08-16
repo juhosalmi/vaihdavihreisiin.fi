@@ -19,4 +19,11 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://vaihdavihreisiin.fi/sv/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vaihdavihreisiin.fi/"/>
   </url>
+  <url>
+    <loc>https://vaihdavihreisiin.fi/essayah-ruokaturva/</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://vaihdavihreisiin.fi/essayah-ruokaturva/"/>
+  </url>
 </urlset>
