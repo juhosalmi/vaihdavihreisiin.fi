@@ -1,0 +1,5 @@
+# vaihdavihreisiin.fi → markkinavihreat.fi
+# The "Lisää markkinoita!" program moved to the main site. Preserve link equity
+# with a permanent redirect (both the bare and trailing-slash / sub-path forms).
+/lisaa-markkinoita    https://markkinavihreat.fi/ehdotukset/lisaa-markkinoita/  301
+/lisaa-markkinoita/*  https://markkinavihreat.fi/ehdotukset/lisaa-markkinoita/  301
